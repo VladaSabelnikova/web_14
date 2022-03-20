@@ -1,1 +1,1 @@
-web: python materials.py
+web: python task_2.py
