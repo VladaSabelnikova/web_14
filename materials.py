@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 import logging
 import json
@@ -120,4 +122,6 @@ def get_first_name(req):
 
 
 if __name__ == '__main__':
+    port = int(os.getenv('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
     app.run()
