@@ -1,9 +1,9 @@
+import json
+import logging
 import os
+import random
 
 from flask import Flask, request
-import logging
-import json
-import random
 
 app = Flask(__name__)
 
@@ -14,12 +14,18 @@ logging.basicConfig(level=logging.INFO)
 # которые мы записали в прошлом пункте.
 
 cities = {
-    'москва': ['937455/fd5bfdd5aa44a1b642dc',
-               '1030494/b41de5a3516e074edfae'],
-    'нью-йорк': ['937455/78e229df04a45d2d7054',
-                 '1652229/931f6a5fcae8686a6c23'],
-    'париж': ["1540737/c061ed1736ed7dcc62d2",
-              '1652229/2dc16d00a578103d7112']
+    'москва': [
+        '937455/fd5bfdd5aa44a1b642dc',
+        '1030494/b41de5a3516e074edfae'
+    ],
+    'нью-йорк': [
+        '937455/78e229df04a45d2d7054',
+        '1652229/931f6a5fcae8686a6c23'
+    ],
+    'париж': [
+        '1540737/c061ed1736ed7dcc62d2',
+        '1652229/2dc16d00a578103d7112'
+    ]
 }
 
 # создаем словарь, где для каждого пользователя
