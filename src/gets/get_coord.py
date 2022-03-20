@@ -1,7 +1,9 @@
+from typing import Tuple, Union
+
 import requests
 
 
-def get_coordinates(city_name):
+def get_coordinates(city_name: str) -> Union[Tuple[float, float], Exception]:
     try:
         url = "https://geocode-maps.yandex.ru/1.x/"
         params = {

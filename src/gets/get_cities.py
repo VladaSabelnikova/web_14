@@ -1,4 +1,4 @@
-def get_cities(req):
+def get_cities(req: dict) -> list:
     cities = []
     for entity in req['request']['nlu']['entities']:
         if entity['type'] == 'YANDEX.GEO':

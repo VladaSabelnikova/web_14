@@ -1,7 +1,8 @@
 import math
+from typing import Tuple
 
 
-def get_distance(p1, p2):
+def get_distance(p1: Tuple[float], p2: Tuple[float]) -> float:
     # p1 и p2 - это кортежи из двух элементов - координаты точек
     radius = 6373.0
 
