@@ -14,12 +14,12 @@ logging.basicConfig(level=logging.INFO)
 # которые мы записали в прошлом пункте.
 
 cities = {
-    'москва': ['1540737/daa6e420d33102bf6947',
-               '213044/7df73ae4cc715175059e'],
-    'нью-йорк': ['1652229/728d5c86707054d4745f',
-                 '1030494/aca7ed7acefde2606bdc'],
-    'париж': ["1652229/f77136c2364eb90a3ea8",
-              '3450494/aca7ed7acefde22341bdc']
+    'москва': ['937455/fd5bfdd5aa44a1b642dc',
+               '1030494/b41de5a3516e074edfae'],
+    'нью-йорк': ['937455/78e229df04a45d2d7054',
+                 '1652229/931f6a5fcae8686a6c23'],
+    'париж': ["1540737/c061ed1736ed7dcc62d2",
+              '1652229/2dc16d00a578103d7112']
 }
 
 # создаем словарь, где для каждого пользователя
@@ -27,7 +27,7 @@ cities = {
 sessionStorage = {}
 
 
-@app.route('/post', methods=['POST'])
+@app.route('/\\wsl$\Ubuntu\home\vlada\yandex_liceum\web_14_alisa_2', methods=['POST'])
 def main():
     logging.info(f'Request: {request.json!r}')
     response = {
