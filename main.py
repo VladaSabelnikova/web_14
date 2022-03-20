@@ -11,12 +11,6 @@ from src.gets.get_distance import get_distance
 
 app = Flask(__name__)
 
-logging.basicConfig(
-    level=logging.INFO,
-    filename='app.log',
-    format='%(asctime)s %(levelname)s %(name)s %(message)s'
-)
-
 
 @app.route('/post', methods=['POST'])
 def main():
@@ -31,6 +25,11 @@ def main():
     handle_dialog(response, request.json)
     logging.info('Request: %r', response)
     return json.dumps(response)
+
+
+@app.route('/')
+def root():
+    return 'привет привет'
 
 
 def handle_dialog(res, req):
