@@ -1,1 +1,1 @@
-web: python materials_2.py
+web: python main.py
