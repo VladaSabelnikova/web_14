@@ -8,3 +8,5 @@ Flask-JWT-Simple==0.0.3
 SQLAlchemy-serializer==1.4.1
 pytest==7.0.1
 Flask-RESTful==0.3.9
+
+requests~=2.22.0
