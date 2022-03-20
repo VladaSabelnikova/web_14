@@ -4,6 +4,7 @@ import os
 
 from flask import Flask, request
 
+from src.gets.get_cities import get_cities
 from src.gets.get_coord import get_coordinates
 from src.gets.get_country import get_country
 from src.gets.get_distance import get_distance
