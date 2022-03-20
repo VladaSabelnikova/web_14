@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 
 from flask import Flask, request
 
@@ -56,14 +57,7 @@ def handle_dialog(res, req):
         res['response']['text'] = 'Слишком много городов! Максимум 2 можно!'
 
 
-def get_cities(req):
-    cities = []
-    for entity in req['request']['nlu']['entities']:
-        if entity['type'] == 'YANDEX.GEO':
-            if 'city' in entity['value']:
-                cities.append(entity['value']['city'])
-    return cities
-
-
 if __name__ == '__main__':
+    port = int(os.getenv('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
     app.run()
