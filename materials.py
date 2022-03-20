@@ -27,7 +27,7 @@ cities = {
 sessionStorage = {}
 
 
-@app.route('/\\wsl$\Ubuntu\home\vlada\yandex_liceum\web_14_alisa_2', methods=['POST'])
+@app.route('/post', methods=['POST'])
 def main():
     logging.info(f'Request: {request.json!r}')
     response = {
