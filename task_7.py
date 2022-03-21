@@ -115,7 +115,7 @@ def play_game(res, req):
     else:
         city = sessionStorage[user_id]['city']
         if get_city(req) == city:
-            res['response']['text'] = 'Правильно! Сыграем ещё?'
+            res['response']['text'] = f'Правильно {sessionStorage[user_id]["first_name"]}! Сыграем ещё?'
             res['response']['buttons'] = [
                 {
                     "title": "Покажи город на карте",
