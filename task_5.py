@@ -1,9 +1,9 @@
-import json
-import logging
 import os
-import random
 
 from flask import Flask, request
+import logging
+import json
+import random
 
 app = Flask(__name__)
 
@@ -59,8 +59,7 @@ def handle_dialog(res, req):
         else:
             sessionStorage[user_id]['first_name'] = first_name
             sessionStorage[user_id]['guessed_cities'] = []
-            res['response'][
-                'text'] = f'Приятно познакомиться, {first_name.title()}. Я Алиса. Отгадаешь город по фото?'
+            res['response']['text'] = f'Приятно познакомиться, {first_name.title()}. Я Алиса. Отгадаешь город по фото?'
             res['response']['buttons'] = [
                 {
                     'title': 'Да',
@@ -75,7 +74,6 @@ def handle_dialog(res, req):
         if not sessionStorage[user_id]['game_started']:
             if 'да' in req['request']['nlu']['tokens']:
                 if len(sessionStorage[user_id]['guessed_cities']) == 3:
-                    # если все три города отгаданы, то заканчиваем игру
                     res['response']['text'] = 'Ты отгадал все города!'
                     res['end_session'] = True
                 else:
@@ -118,28 +116,26 @@ def play_game(res, req):
         city = sessionStorage[user_id]['city']
         if get_city(req) == city:
             res['response']['text'] = 'Правильно! Сыграем ещё?'
+            res['response']['buttons'] = [
+                {
+                    "title": "Покажи город на карте",
+                    "url": f"https://market.yandex.ru/search?text={city}",
+                    "hide": True
+                }
+            ]
             sessionStorage[user_id]['guessed_cities'].append(city)
             sessionStorage[user_id]['game_started'] = False
             return
         else:
             if attempt == 3:
-                res['response'][
-                    'text'] = f'Вы пытались. Это {city.title()}. Сыграем ещё?'
-                res['response']['buttons'] = [
-                    {
-                        "title": "Покажи город на карте",
-                        "url": f"https://yandex.ru/maps/?mode=search&text={city}",
-                        "hide": True
-                    }
-                ]
+                res['response']['text'] = f'Вы пытались. Это {city.title()}. Сыграем ещё?'
                 sessionStorage[user_id]['game_started'] = False
                 sessionStorage[user_id]['guessed_cities'].append(city)
                 return
             else:
                 res['response']['card'] = {}
                 res['response']['card']['type'] = 'BigImage'
-                res['response']['card'][
-                    'title'] = 'Неправильно. Вот тебе дополнительное фото'
+                res['response']['card']['title'] = 'Неправильно. Вот тебе дополнительное фото'
                 res['response']['card']['image_id'] = cities[city][attempt - 1]
                 res['response']['text'] = 'А вот и не угадал!'
     sessionStorage[user_id]['attempt'] += 1
