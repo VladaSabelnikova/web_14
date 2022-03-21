@@ -74,7 +74,7 @@ def handle_dialog(res, req):
         if not sessionStorage[user_id]['game_started']:
             if 'да' in req['request']['nlu']['tokens']:
                 if len(sessionStorage[user_id]['guessed_cities']) == 3:
-                    res['response']['text'] = f'{sessionStorage["user_id"]["first_name"].title()} Ты отгадал все города!'
+                    res['response']['text'] = f'{sessionStorage[user_id]["first_name"]} ты отгадал все города!'
                     res['end_session'] = True
                 else:
                     sessionStorage[user_id]['game_started'] = True
@@ -84,7 +84,7 @@ def handle_dialog(res, req):
                 res['response']['text'] = 'Ну и ладно!'
                 res['end_session'] = True
             else:
-                res['response']['text'] = 'Не поняла ответа! Так да или нет?'
+                res['response']['text'] = f'{sessionStorage[user_id]["first_name"]} не поняла ответа! Так да или нет?'
                 res['response']['buttons'] = [
                     {
                         'title': 'Да',
@@ -109,7 +109,7 @@ def play_game(res, req):
         sessionStorage[user_id]['city'] = city
         res['response']['card'] = {}
         res['response']['card']['type'] = 'BigImage'
-        res['response']['card']['title'] = f'{sessionStorage["user_id"]["first_name"].title()} Что это за город?'
+        res['response']['card']['title'] = f'{sessionStorage[user_id]["first_name"]} Что это за город?'
         res['response']['card']['image_id'] = cities[city][attempt - 1]
         res['response']['text'] = 'Тогда сыграем!'
     else:
