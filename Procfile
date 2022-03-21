@@ -1,1 +1,1 @@
-web: python task_7.py
+web: python task_8.py
